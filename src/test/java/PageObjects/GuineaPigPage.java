@@ -13,9 +13,11 @@ public class GuineaPigPage extends BasePage {
     public WebDriver pageDriver;
 
     String theActiveLink =pageElements.readProperty("GuineaPigPage.link");
-    String yourCommentsSpan = pageElements.readProperty("GuineaPigPage.yourCommentsSpan");
-    String commentsTextAreaInput = pageElements.readProperty("GuineaPigPage.commentsTextAreaInput");
+    String comments = pageElements.readProperty("GuineaPigPage.Comments");
+    String email = pageElements.readProperty("GuineaPigPage.Email");
     String submitButton = pageElements.readProperty("GuineaPigPage.submitButton");
+    String yourComments = pageElements.readProperty("GuineaPigPage.YourComments");
+    String enteredComments= testData.readProperty("GuineaPigPage.EnteredComments");
 
 
 
@@ -26,11 +28,15 @@ public class GuineaPigPage extends BasePage {
         seleniumLib.getElement(theActiveLink).click();
     }
 
-    public void submitComment(String text) {
-        seleniumLib.getElement(commentsTextAreaInput).sendKeys(text);
-        seleniumLib.getElement(submitButton).click();
+    public void submitForm() {
+        String text="abc@def.com";
+        enterText(getElement(email),text);
+        enterText(getElement(comments),enteredComments);
+        //seleniumLib.getElement(commentsTextAreaInput).sendKeys(text);
+        //seleniumLib.getElement(submitButton).click();
 
-        seleniumLib.waitForTextPresentInElement(seleniumLib.getElement(yourCommentsSpan),text);
+        //seleniumLib.waitForTextPresentInElement(seleniumLib.getElement(commentsTextAreaInput),text);
+        seleniumLib.getElement(submitButton).click();
 
         // Race condition for time to populate yourCommentsSpan
        // WebDriverWait wait = new WebDriverWait(this.driver, 15);
@@ -47,6 +53,6 @@ public class GuineaPigPage extends BasePage {
     }
 
     public boolean isCommentDisplayed() {
-    return seleniumLib.isTextContainedInElement(seleniumLib.getElement(yourCommentsSpan),pageElements.readProperty("RANDOM_TEXT"));
+    return seleniumLib.isTextContainedInElement(getElement(yourComments),enteredComments);
     }
 }

@@ -29,7 +29,8 @@ public class GuineaPigSteps extends BaseStepDef {
 	@Given("^I am on the Guinea Pig homepage$")
 	public void user_is_on_guinea_pig_page() throws Exception {
 		//log.log_def_track("Start Given of GuineaPigSteps");
-		basePage.clickURL(testData.readProperty("TEST_URL"));
+		//System.out.println(testConfigs.readProperty("TEST_URL"));
+		basePage.clickURL(testConfigs.readProperty("TEST_URL"));
 	}
 
 	@When("^I click on the link$")
@@ -37,10 +38,10 @@ public class GuineaPigSteps extends BaseStepDef {
 		guineaPigPage.followLink();
 	}
 
-	@When("^I submit a comment$")
+	@When("^I submit Form$")
 	public void user_submit_comment() throws Exception {
-		commentInputText = pageElements.readProperty("RANDOM_TEXT");
-		guineaPigPage.submitComment(commentInputText);
+		//commentInputText = testData.readProperty("RANDOM_TEXT");
+		guineaPigPage.submitForm();
 	}
 
 	@Then("^I should be on another page$")

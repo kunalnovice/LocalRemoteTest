@@ -39,7 +39,7 @@ public class BaseStepDef extends Common {
 			sessionId = (((RemoteWebDriver) remoteDriver).getSessionId()).toString();
 		} else {
 			if (localDriver == null) {
-				System.setProperty("webdriver.gecko.driver", "c:\\chromedriver\\geckodriver.exe");
+				System.setProperty("webdriver.gecko.driver", "C:\\AutomationProjects\\Drivers\\geckodriver.exe");
 				localDriver = new FirefoxDriver();
 
 				localDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

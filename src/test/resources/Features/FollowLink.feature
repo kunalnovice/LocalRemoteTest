@@ -9,5 +9,5 @@ Feature: Guinea Pig link
   @one
   Scenario: Can submit comment_new scenario
     Given I am on the Guinea Pig homepage
-    When I submit a comment
+    When I submit Form
     Then I should see that comment displayed
