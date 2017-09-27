@@ -18,11 +18,6 @@ Feature: ContactUs.feature
       |message|Please contact me I want to find out more|
 
 
-  Scenario: Error Message id displayed
-    Given I am on ContactUs Page
-    When I submit empty ContactUs Page
-    Then Error Message is displayed on COntactUs Page
-
   @one
   Scenario: some scenario- Exception failing scenario always
     Given I am on some Page
