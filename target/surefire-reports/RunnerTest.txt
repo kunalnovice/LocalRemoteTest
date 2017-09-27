@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: RunnerTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 46.72 sec <<< FAILURE!
+Given I am on some Page(Scenario: some scenario- Exception failing scenario always)  Time elapsed: 0.021 sec  <<< ERROR!
+java.lang.Exception
+	at StepDefinitions.MyTestStepdefs.iAmOnThPage(MyTestStepdefs.java:12)
+	at ✽.Given I am on some Page(ContactUs.feature:28)
+Scenario: some scenario- Exception failing scenario always  Time elapsed: 0.022 sec  <<< ERROR!
+java.lang.Exception
+	at StepDefinitions.MyTestStepdefs.iAmOnThPage(MyTestStepdefs.java:12)
+	at ✽.Given I am on some Page(ContactUs.feature:28)
