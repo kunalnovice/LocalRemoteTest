@@ -10,6 +10,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 
+import static PageObjects.BasePage.seleniumLib;
 import static org.junit.Assert.assertTrue;
 
 public class GuineaPigSteps extends BaseStepDef {
@@ -21,7 +22,7 @@ public class GuineaPigSteps extends BaseStepDef {
 		//log.log_def_track("Start Before Hook of GuineaPigSteps");
 		baseScenario=scenario;
 		setDriver();
-		initalize(finalDriver);
+		initalizePages(finalDriver);
 		//log.log_def_track("Closure Before Hook of GuineaPigSteps");
 
 	}
@@ -40,6 +41,7 @@ public class GuineaPigSteps extends BaseStepDef {
 
 	@When("^I submit Form$")
 	public void user_submit_comment() throws Exception {
+		Assert.assertTrue(guineaPigPage.isPageLoaded());
 		//commentInputText = testData.readProperty("RANDOM_TEXT");
 		guineaPigPage.submitForm();
 	}
@@ -52,6 +54,7 @@ public class GuineaPigSteps extends BaseStepDef {
 	@Then("^I should see that comment displayed$")
 	public void comment_displayed() throws Exception {
 	//	assertThat(page.getSubmittedCommentText(), containsString(commentInputText));
+
 		Assert.assertTrue(guineaPigPage.isCommentDisplayed());
 	}
 

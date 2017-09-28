@@ -53,6 +53,13 @@ public class GuineaPigPage extends BasePage {
     }
 
     public boolean isCommentDisplayed() {
+        seleniumLib.waitForElementVisible(getElement(yourComments));
     return seleniumLib.isTextContainedInElement(getElement(yourComments),enteredComments);
     }
+
+    public boolean isPageLoaded() {
+        return seleniumLib.waitForElementVisible(getElement(comments));
+    }
+
+
 }

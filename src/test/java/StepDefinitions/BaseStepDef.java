@@ -11,6 +11,7 @@ import cucumber.api.Scenario;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -27,6 +28,7 @@ public class BaseStepDef extends Common {
 	protected static SummaryPage summaryPage;
     protected  static GuineaPigPage guineaPigPage;
     protected  static LinkPage linkPage;
+    protected static PopupPage popupPage;
 	public String sessionId;
 	public boolean sauceLabsFlag = testConfigs.getSauceLabsFlag();
 
@@ -43,6 +45,7 @@ public class BaseStepDef extends Common {
 				localDriver = new FirefoxDriver();
 
 				localDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				localDriver.manage().window().maximize();
 			}
 		}
 
@@ -99,7 +102,7 @@ public class BaseStepDef extends Common {
 		*/
 
 
-	public void initalize(WebDriver driver) {
+	public void initalizePages(WebDriver driver) {
 
 			basePage = new BasePage(driver);
 		    homePage = new HomePage(driver);
@@ -107,6 +110,7 @@ public class BaseStepDef extends Common {
 			summaryPage = new SummaryPage(driver);
             guineaPigPage = new GuineaPigPage(driver);
             linkPage = new LinkPage(driver);
+			popupPage = new PopupPage(driver);
 
 			}
 

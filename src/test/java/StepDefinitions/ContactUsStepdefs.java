@@ -28,7 +28,7 @@ public class ContactUsStepdefs extends BaseStepDef
 
         baseScenario=scenario;
         setDriver();
-        initalize(finalDriver);
+        initalizePages(finalDriver);
 
 
     }
