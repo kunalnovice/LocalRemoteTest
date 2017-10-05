@@ -47,6 +47,13 @@ public class LocalDriverSetup extends Common {
                 driver= new InternetExplorerDriver();
                 break;
             }
+
+            case "iexplore" : {
+                System.setProperty("webdriver.ie.driver", "C:\\AutomationProjects\\Drivers\\IEDriverServer.exe");
+                driver= new InternetExplorerDriver();
+                break;
+            }
+
             case "default" :
                 System.setProperty("webdriver.ie.driver", "C:\\AutomationProjects\\Drivers\\IEDriverServer.exe");
                 driver= new InternetExplorerDriver();

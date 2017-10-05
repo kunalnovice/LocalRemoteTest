@@ -38,6 +38,8 @@ public class BaseStepDef extends Common {
 
 	public void setDriver() throws Exception{
 		//log.log_def_track("Start setDriver of BaseSteps");
+		String localSingleBrowserExecutionAutomaticCheck = System.getProperty("browsername");
+
 		if(sauceLabsFlag) {
 			remoteDriver =rds.getRemoteWebDriver(baseScenario.getName());
 			sessionId = (((RemoteWebDriver) remoteDriver).getSessionId()).toString();
