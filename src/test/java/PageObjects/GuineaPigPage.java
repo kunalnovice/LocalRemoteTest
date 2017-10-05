@@ -1,6 +1,10 @@
 package PageObjects;
 
+
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+
+import java.awt.event.KeyEvent;
 
 public class GuineaPigPage extends BasePage {
 
@@ -25,7 +29,7 @@ public class GuineaPigPage extends BasePage {
 
     public void followLink() {
 
-        seleniumLib.getElement(theActiveLink).click();
+        seleniumLib.getElement(theActiveLink).sendKeys(Keys.RETURN);
     }
 
     public void submitForm() {
@@ -36,7 +40,7 @@ public class GuineaPigPage extends BasePage {
         //seleniumLib.getElement(submitButton).click();
 
         //seleniumLib.waitForTextPresentInElement(seleniumLib.getElement(commentsTextAreaInput),text);
-        seleniumLib.getElement(submitButton).click();
+        seleniumLib.getElement(submitButton).sendKeys(Keys.RETURN);
 
         // Race condition for time to populate yourCommentsSpan
        // WebDriverWait wait = new WebDriverWait(this.driver, 15);

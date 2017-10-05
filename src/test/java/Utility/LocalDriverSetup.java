@@ -31,6 +31,9 @@ public class LocalDriverSetup extends Common {
 
     public WebDriver getLocalWebDriver(String browserName) throws Exception {
          browserName= System.getProperty("browserName");
+         if (browserName==null) {
+             browserName="default";
+        }
         //log.log_def_track("start of getFinalRemoteWebDriver in RemoteDriverSetup Class");
         switch(browserName) {
             case "firefox" : {
@@ -44,6 +47,10 @@ public class LocalDriverSetup extends Common {
                 driver= new InternetExplorerDriver();
                 break;
             }
+            case "default" :
+                System.setProperty("webdriver.ie.driver", "C:\\AutomationProjects\\Drivers\\IEDriverServer.exe");
+                driver= new InternetExplorerDriver();
+                break;
         }
         return driver;
     }

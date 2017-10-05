@@ -1,6 +1,7 @@
 package PageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -27,7 +28,7 @@ public class PopupPage extends BasePage {
 
        for(int i=0;i<size;i++) {
            if(webElements.get(i).getText().equals("New Browser Window")) {
-               webElements.get(i).click();
+               webElements.get(i).sendKeys(Keys.ENTER);
            }
        }
     }

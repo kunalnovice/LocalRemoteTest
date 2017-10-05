@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class RemoteDriverSetup extends Common {
     public DesiredCapabilities caps ;
-    public static final String USERNAME = "framework";
+    public static final String USERNAME = "frameworknew";
     public static final String ACCESS_KEY = testConfigs.readProperty("Saucelabs");
     public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
 
@@ -27,7 +27,7 @@ public class RemoteDriverSetup extends Common {
     }
 
 
-    public WebDriver getFinalRemoteWebDriver(String jobName) throws Exception {
+    public WebDriver getRemoteWebDriver(String jobName) throws Exception {
         //log.log_def_track("start of getFinalRemoteWebDriver in RemoteDriverSetup Class");
         setDesiredCapability(jobName);
         WebDriver driver = new RemoteWebDriver(new URL(URL), caps);

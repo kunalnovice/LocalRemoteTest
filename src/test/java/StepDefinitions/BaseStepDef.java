@@ -5,6 +5,7 @@ package StepDefinitions;
 
 import PageObjects.*;
 import Utility.Common;
+import Utility.LocalDriverSetup;
 import Utility.RemoteDriverSetup;
 import Utility.SauceUtils;
 import cucumber.api.Scenario;
@@ -32,27 +33,29 @@ public class BaseStepDef extends Common {
 	public String sessionId;
 	public boolean sauceLabsFlag = testConfigs.getSauceLabsFlag();
 
-	RemoteDriverSetup ds = new RemoteDriverSetup();
+	RemoteDriverSetup rds = new RemoteDriverSetup();
+	LocalDriverSetup lds = new LocalDriverSetup();
 
 	public void setDriver() throws Exception{
 		//log.log_def_track("Start setDriver of BaseSteps");
 		if(sauceLabsFlag) {
-			remoteDriver =ds.getFinalRemoteWebDriver(baseScenario.getName());
+			remoteDriver =rds.getRemoteWebDriver(baseScenario.getName());
 			sessionId = (((RemoteWebDriver) remoteDriver).getSessionId()).toString();
 		} else {
 			if (localDriver == null) {
-				System.setProperty("webdriver.gecko.driver", "C:\\AutomationProjects\\Drivers\\geckodriver.exe");
-				localDriver = new FirefoxDriver();
+				String browser= System.getProperty("browsername");
+				localDriver = lds.getLocalWebDriver(browser);
+				//System.out.println(System.getProperty("browsername"));
 
 				localDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				localDriver.manage().window().maximize();
 			}
 		}
 
-		if(remoteDriver==null) {
-			finalDriver=localDriver;
-		} else {
+		if(sauceLabsFlag) {
 			finalDriver=remoteDriver;
+		} else {
+			finalDriver=localDriver;
 		}
 		//log.log_def_track("Closure of setDriver of BaseSteps");
 	}
@@ -60,15 +63,16 @@ public class BaseStepDef extends Common {
 
 	public void terminateDriver() throws Exception {
 		finalDriver.quit();
-		finalDriver=null;
+		//finalDriver=null;
 		if (sauceLabsFlag) {
 
 			remoteDriver=null;
 			System.out.println("SauceOnDemandSessionID=" + sessionId + "job-name=" + baseScenario.getName());
+			if(sessionId!=null)
 			SauceUtils.UpdateResults(RemoteDriverSetup.USERNAME, RemoteDriverSetup.ACCESS_KEY, !baseScenario.isFailed(), sessionId);
 
 		} else {
-			System.out.println("No special requirement for local driver closure");
+			//System.out.println("No special requirement for local driver closure");
 			localDriver=null;
 
 		}

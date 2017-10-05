@@ -74,6 +74,7 @@ public class SeleniumLib {
 
     public boolean isTextContainedInElement(WebElement element, String str) {
         try {
+            waitForElementVisible(element);
             return element.getText().contains(str);
         } catch (Exception t) {
             //log.log_library_error("Exception caught- Text not present in Element" + element + "", t);

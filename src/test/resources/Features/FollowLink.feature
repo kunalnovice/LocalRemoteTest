@@ -1,6 +1,6 @@
 Feature: Guinea Pig link
 
-  @one
+  @test1
   Scenario: Can follow link to another page
     Given I am on the Guinea Pig homepage
     When I click on the link

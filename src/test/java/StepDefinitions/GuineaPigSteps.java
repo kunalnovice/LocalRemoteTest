@@ -61,7 +61,9 @@ public class GuineaPigSteps extends BaseStepDef {
 	@After
 	public void tearDown(Scenario scenario) throws Exception {
 		try {
+			System.out.println("in GuineaPigSteps");
 			terminateDriver();
+
 
 		} catch (Exception e) {
 			System.out.println(e);

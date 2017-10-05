@@ -1,6 +1,6 @@
 Feature: Demo for using Robot Class
 
-  @one
+  @test
   Scenario: Demo using RObit class to switch to other window
     Given I open second website
-    When I can perform operation on second website using Robot
+    #When I can perform operation on second website using Robot
